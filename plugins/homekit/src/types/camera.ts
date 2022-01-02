@@ -221,7 +221,11 @@ addSupportedType({
                 }, 60000));
 
 
-                const videomtu = 188 * 3;
+                let videomtu = 188 * 3;
+
+                if (request.video.mtu)
+                    videomtu = Math.floor(request.video.mtu / 188) * 188;
+
                 const audiomtu = 188 * 1;
 
                 try {
