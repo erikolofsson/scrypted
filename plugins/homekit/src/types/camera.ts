@@ -326,7 +326,7 @@ addSupportedType({
                                     ['libfdk_aac', '-profile:a', 'aac_eld']),
                                 '-flags', '+global_header',
                                 '-ar', `${(request as StartStreamRequest).audio.sample_rate}k`,
-                                '-b:a', `${(request as StartStreamRequest).audio.max_bit_rate}k`,
+                                '-b:a', `${Math.max((request as StartStreamRequest).audio.max_bit_rate, 39)}k`,
                                 '-ac', `${(request as StartStreamRequest).audio.channel}`,
                                 "-payload_type",
                                 (request as StartStreamRequest).audio.pt.toString(),
